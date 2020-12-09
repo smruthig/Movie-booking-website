@@ -1,0 +1,275 @@
+<html>
+<head>
+	<title>
+		TICKETR
+	</title>
+	<link rel="shortcut icon" href="logo2.png" />
+	<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script> 
+	<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script> 
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"> </script>
+	<script src="jquery-3.5.1.js"></script>
+	<script>
+	$(document).ready(function(){
+		setInterval(function(){
+			$("#fade").fadeOut(1500,function(){
+				$(this).fadeIn(1500, function(){
+				});
+			})
+		},3000)
+		
+		$("#animate>p").mouseover(function(){
+			if($(this).css("opacity")== 1)
+				$(this).animate({
+					left: "5px",
+					opacity: 0.4,
+					fontSize: "1.5em"
+				}, 1200 );
+			else
+				$(this).animate({
+					left: "0px",
+					opacity: 1,
+					fontSize: "1em"
+				}, 1200 );
+			});
+	})
+	</script>
+	
+	<script type="text/babel">
+			var mon,tue,wed,thur,fri,sat;
+			function getdata(){
+				$.getJSON('http://localhost:3000/home/movies',	// url
+					{date: 'Monday'}, 							// request parameters
+					function (data, textStatus, jqXHR) {
+						mon=data;
+						fill_data('#monday', mon);
+					}
+				);
+				$.getJSON('http://localhost:3000/home/movies',	// url
+					{date: 'Tuesday'}, 							// request parameters
+					function (data, textStatus, jqXHR){
+						tue=data;
+						fill_data('#tuesday', tue);
+					}
+				);
+				$.getJSON('http://localhost:3000/home/movies',	// url
+					{date: 'Wednesday'}, 						// request parameters
+					function (data, textStatus, jqXHR){
+						wed=data;
+						fill_data('#wednesday', wed);
+					}
+				);
+				$.getJSON('http://localhost:3000/home/movies',	// url
+					{date: 'Thursday'}, 						// request parameters
+					function (data, textStatus, jqXHR){
+						thur=data;
+						fill_data('#thursday', thur);
+					}
+				);
+				$.getJSON('http://localhost:3000/home/movies',	// url
+					{date: 'Friday'}, 							// request parameters
+					function (data, textStatus, jqXHR){
+						fri=data;
+						fill_data('#friday', fri);
+					}
+				);
+				$.getJSON('http://localhost:3000/home/movies',	// url
+					{date: 'Saturday'}, 						// request parameters
+					function (data, textStatus, jqXHR){
+						sat=data;
+						fill_data('#saturday', sat);
+					}
+				);
+			}
+			
+			function fill_data(day, data){
+				class Movie_poster extends React.Component {
+					constructor(props, context) {
+						super(props, context);
+						this.state = {
+							poster: this.props.poster
+						};
+						this.loadImg = this.loadImg.bind(this);
+					}
+					componentDidMount() {
+						this.loadImg();
+					}
+					loadImg() {
+							this.setState(()=>{
+								return {
+									poster: data[this.props.number]['poster']
+								}
+							});
+					}
+					render() {
+						return (
+							<img id='poster' src={this.state.poster} width='200px' height='300px'></img>
+						);
+					}
+				}
+				
+				class Movie_title extends React.Component {
+					constructor(props, context) {
+						super(props, context);
+						this.state = {
+							title: this.props.title
+						};
+						this.loadTitle = this.loadTitle.bind(this);
+					}
+					componentDidMount() {
+						this.loadTitle();
+					}
+					loadTitle() {
+							this.setState(()=>{
+								return {
+									title: data[this.props.number]['name']
+								}
+							});
+					}
+					render() {
+						return (
+							<h5>
+								<i>{this.state.title}</i>
+							</h5>
+						);
+					}
+				}
+		
+				class Day extends React.Component{
+					constructor(props, context){
+						super(props,context);
+						this.url='http://localhost:8080/movies.html?index='+data[this.props.number]['index'];
+					}
+					render(){
+						return(
+							<div class="result" style={{display:'inline-block'}}>
+								<a href={this.url}><Movie_poster {...this.props}/></a>
+								<center><Movie_title {...this.props}/></center>
+							</div>
+						)
+					}
+				}
+				ReactDOM.render(
+					<div>
+						<Day poster='none' title='none' number='0'/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<Day poster='none' title='none' number='1'/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<Day poster='none' title='none' number='2'/>
+					</div>,
+					document.querySelector(day)
+				);
+			}
+		</script>
+	
+	<link rel='stylesheet' href='home.css'></link>
+</head>
+
+<body onload='getdata()'>
+	<header>
+		<img id='logo' src='logo1.png' height='50px' width='60px'></img>
+		<br/>
+		<h1>TICKETR</h1>
+		<div id='profile'></div>
+		<br/>
+	</header>
+	<nav>
+		<ul>
+			<li class='nav'><b><a href='home.html'>Home</a></b></li>
+			<li class='nav'><b><a href='about_us.html'>About Us</a></b></li>
+			<li class='nav'><b><a href='home.html#about'>Contact<a></b></li>
+		</ul>
+		<div id='search'>
+			<input type='text' name='search' placeholder='Search'></input>
+		</div>
+	</nav>
+	
+	<div id='main'>
+		<div class="row">
+			<div class="column" id='movies'>
+				<h2>Monday</h2>
+				<div id="monday"></div>
+				<h2>Tuesday</h2>
+				<div id="tuesday"></div>
+				<h2>Wednesday</h2>
+				<div id="wednesday"></div>
+				<h2>Thursday</h2>
+				<div id="thursday"></div>
+				<h2>Friday</h2>
+				<div id="friday"></div>
+				<h2>Saturday</h2>
+				<div id="saturday"></div>
+			
+			<footer id='about'>
+				
+				<h3>Call us at: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Email us your queries at:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Address:&nbsp;&nbsp;&nbsp;</h3>
+				
+				9884309275 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				ticketr@ticketr.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				ETX mall,<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				2nd main road,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Viman Nagar,<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Pune-14<br/><br/>
+				
+			</footer>
+			</div>
+		
+			<div class="column" id='offers'>
+			<h2 ><center>Offers</center></h2>
+			<center><h3 style="color: #f42069"><span id='fade'>Hurry up and buy now!</span></h3></center>
+			<div id='animate'>
+				<p>Valentine's day offer:</p>
+				<p>Couple's tickets: 10% off</p>
+				<br/><hr/><br/>
+				<p>Popcorn and drinks: 15% off</p>
+				<br/><hr/>
+				<p>Celebrating our 15th year!</p>
+				<p>15% off on every purchase</p>
+				<br/>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+</html>

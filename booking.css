@@ -1,0 +1,151 @@
+ header
+{
+	background-color:#df2243;
+	position: sticky;
+	top: 0px;
+	z-index:1;
+}
+
+#logo
+{
+	margin-top:12px;
+	display:inline;
+	margin-left:10px;
+}
+
+#profile
+{
+	text-align: right;
+}
+
+h1
+{
+	text-align: center;
+	color:white;
+	font-family:Constantia;
+	margin-top:0px;
+	padding-top:0px;
+	position: absolute;
+	top: 15px;
+	left:550px;
+}
+
+nav 
+{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	background-color: rgb(65,239,165);
+
+	width: 100%;
+	position: sticky;
+	top: 77px;
+	z-index:1;
+}
+
+.nav
+{
+	float: left;
+	list-style-type:none;
+}
+
+.nav a
+{
+	display: block;
+	color: white;
+	text-align: center;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-right:20px;
+	text-decoration: none;
+	font-family:Algerian;
+	margin-top:0px;
+}
+
+.nav a:hover
+{
+	background-color: rgb(200,191,231);
+}
+
+#search
+{
+	text-align:right;
+	margin-right:30px;
+	margin-top: 10px;
+	margin-bottom:15px;
+}
+	
+#main
+{
+	margin-left:60px;
+	margin-right:60px;
+}
+
+#table0
+{
+	border:2px outset #cfcbca;
+}
+
+#table0 td, #table0 th
+{
+	padding:15px;
+	margin:15px;
+}
+
+#table0 td
+{
+	text-align:center;
+}
+
+tr:nth-child(odd)
+{
+	background-color: #f5f5f5;
+}
+
+*
+{
+	box-sizing: border-box;
+}
+
+.col {
+	float: left;
+	padding: 10px;
+	display:inline;
+}
+
+#vip
+{
+	width: 50%;
+}
+
+#reg
+{
+	width: 50%;		
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+img
+{
+	background-color: #f5f6f7;
+}
+
+button {
+	border-radius: 12px;
+	background-color: #babccf;
+	color: black;
+	padding: 5px 10px;
+	border: 3px outset #e3e6fa;
+	cursor: pointer;
+	width: 12%;
+}
+
+button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+ }

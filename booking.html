@@ -1,0 +1,337 @@
+<html>
+<head>
+	<title>
+		TICKETR
+	</title>
+	<link rel="shortcut icon" href="logo2.png" />
+	<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script> 
+	<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"> </script>
+	<script src="jquery-3.5.1.js"></script>
+	
+	<link rel='stylesheet' href='booking.css'></link>
+	
+	<script type="text/babel">
+		var ind = window.location.href.substr(41);
+		function getdata(){
+			$.getJSON('http://localhost:3000/booking',	// url
+				{'index': ind},		 					// request parameters
+				function (data, textStatus, jqXHR) {
+					fill_data(data);
+				}
+			);
+		}
+		
+		function change_data(vip0,reg0,data)
+		{
+
+			fetch('http://localhost:3000/booking/'+data['index'],{
+				method:'POST',
+				headers:{'content-type':'application/json'},
+				body:JSON.stringify({availability:
+					{
+						vip: data['availability']['vip']-vip0,
+						reg: data['availability']['reg']-reg0
+					}
+				})
+			})
+			.then((res)=>res.text())
+			.then((res)=>{
+				//if (res==='Successful')
+				{
+					var m = document.querySelector('#main');
+					let i = Math.floor(Math.random()*100)%10;
+					let j = Math.floor(Math.random()*100)%10;
+					let k = Math.floor(Math.random()*100)%10;
+					let x=['A','B','C','D','E','F','G','H','I','J'];
+					let code=x[i]+i+x[j]+j+x[k]+k;
+					console.log(code);
+					var price=vip0*data['price']['vip'] + reg0*data['price']['reg'];
+					var w = '<center><h2>Booking confirmed!<h2><br/><h3>Booking Code = ' + code + '</h3></center><br/>' +
+					'<center><table border=4px outset #e3e6fa cellpadding=15 style="text-align:center;">' +
+						'<tr>'+
+							'<td>S.no</td>	<td>Name</td>	<td>VIP</td>	<td>Regular</td>	<td>Cost</td>	<td>Code</td>' +
+						'</tr>' +
+						'<tr>' +
+							"<td>1</td><td>"+data['name']+"</td><td>"+vip0+"</td><td>"+reg0+"</td><td>"+price+"</td><td>"+code+"</td>" +
+						'</tr></table></center>'
+	
+					m.innerHTML = w;
+				}
+			})
+		}
+		
+		function fill_data(data){
+			class Poster extends React.Component {
+				constructor() {
+					super();
+					this.state = {
+						poster: 'none'
+					};
+					this.loadPoster = this.loadPoster.bind(this);
+				}
+				componentDidMount() {
+					this.loadPoster();
+				}
+				loadPoster() {
+						this.setState(()=>{
+							return {
+								poster: data['poster']
+							}
+						});
+				}
+				render() {
+					return (
+							<img src={this.state.poster} width='200px' height='300px'></img>
+					);
+				}
+			}
+			
+			class Naming extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					this.state = {
+						title: 'none',
+					};
+					this.loadNameRate = this.loadNameRate.bind(this);
+				}
+				componentDidMount() {
+					this.loadNameRate();
+				}
+				loadNameRate() {
+						this.setState(()=>{
+							return {
+								title: data['name']
+							}
+						});
+				}
+				render() {
+					return (
+						<div>
+							<font size='6'><b><i>{this.state.title}</i></b></font>
+						</div>
+					);
+				}
+			}
+			
+			class Timing extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					this.state = {
+						time: 'none',
+						day: 'none'
+					};
+					this.loadTiming = this.loadTiming.bind(this);
+				}
+				componentDidMount() {
+					this.loadTiming();
+				}
+				loadTiming() {
+						this.setState(()=>{
+							return {
+								time: data['time'],
+								day: data['date']
+							}
+						});
+				}
+				render() {
+					return (
+						<div>
+							<big><b>Timings: {this.state.time}</b></big>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<big><b>Day: {this.state.day}<br/></b></big>
+						</div>
+					);
+				}
+			}
+			
+			class Avail_price extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					this.state = {
+						avail: [],
+						price:[]
+					};
+					this.loadAvail_price = this.loadAvail_price.bind(this);
+				}
+				componentDidMount() {
+					this.loadAvail_price();
+				}
+				loadAvail_price() {
+						this.setState(()=>{
+							return {
+								avail: data['availability'],
+								price: data['price']
+							}
+						});
+				}
+				render() {
+					return (
+						<div>
+							<h3>Availability and Price</h3>
+							<table border='black' id='table0' cellpadding='5'>
+							<tbody>
+							<tr>
+								<th> </th>
+								<th>Availability</th>
+								<th>Price</th>
+							</tr>
+							<tr>
+								<th>VIP: </th>
+								<td>{this.state.avail['vip']}</td>
+								<td>{this.state.price['vip']}</td>
+							</tr>
+							<tr>
+								<th>Regular: </th>
+								<td>{this.state.avail['reg']}</td>
+								<td>{this.state.price['reg']}</td>
+							</tr>
+							</tbody>
+							</table>
+						</div>
+					);
+				}
+			}
+			
+			class Book extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					
+					this.textPara = null;
+					this.setTextRef = (element) => {
+						this.textPara = element;
+					};
+					
+					this.vipref = null;
+					this.setRefvip = (element) => {
+						this.vipref = element;
+					};
+					
+					this.regref = null;
+					this.setRefreg = (element) => {
+						this.regref = element;
+					};
+					
+					this.changeText = (e) => {   
+						if (this.textPara){
+							e.persist();
+							if ((this.vipref.value-0)!=0 || (this.regref.value-0)!=0)
+							{
+								if ((this.vipref.value-0) > data['availability']['vip'] || (this.regref.value-0) > data['availability']['reg'])
+								{
+									this.vipref.value=0;
+									this.regref.value=0;
+									this.textPara.innerHTML='Exceeding number of seats available';
+									this.textPara.style.color='red';
+								}
+								else
+								{
+									var cost = (this.vipref.value-0)*data['price']['vip'] + (this.regref.value-0)*data['price']['reg'];
+									this.textPara.innerHTML='Cost: '+cost;
+									this.textPara.style.color='black';
+								}
+							}
+							else
+							{
+								var cost=0;
+								this.textPara.innerHTML='Cost: '+cost;
+								this.textPara.style.color='black';
+							}
+							e.preventDefault();
+						}
+					};  
+					
+					this.confirm=() => {
+						if ((this.vipref.value-0)+(this.regref.value-0) == 0)
+						{	
+							this.textPara.innerHTML='Please enter number of seats';
+							this.textPara.style.color='red';
+						}
+						else
+						{
+							var val=confirm('Confirm payment');
+							if (val==true)
+							{
+								change_data(this.vipref.value-0, this.regref.value-0, data);
+							}
+						}
+					}
+					
+					this.url='http://localhost:8080/booking.html?index='+data['index'];
+				}
+			
+				render() {
+						return (
+							<div>
+							<div class='row'>
+							<div class='col' id='vip'>
+							<h4>VIP: </h4>
+							<input type='tel' placeholder='enter number of seats' onChange={this.changeText} name='vip' ref={this.setRefvip}></input>
+							</div>
+							<div class='col' id='reg'>
+							<h4>Regular:</h4>
+							<input type='text' placeholder='enter number of seats' onChange={this.changeText} name='reg' ref={this.setRefreg}></input>
+							</div>
+							</div>
+							<br/>
+							<h3 ref={this.setTextRef}>Cost: 0</h3>
+							<button name='submit' onClick={this.confirm}>Pay Now!</button>
+							</div>
+						);		
+				}				
+			}
+			
+			class Movie extends React.Component{
+				render(){
+					return(
+						<div>
+							<br/>
+							<center><Poster/></center>
+							<br/>
+							<Naming/>
+							<br/>
+							<big>
+							<Timing/>
+							<br/>
+							<Avail_price/>
+							<br/>
+							<Book/>
+							</big>
+						</div>
+					)
+				}
+			}
+			ReactDOM.render(
+				<div>
+					<Movie/>
+				</div>,
+				document.querySelector('#main')
+			);
+		}
+	</script>
+</head>
+
+<body onload='getdata()'>
+	<header>
+		<img id='logo' src='logo1.png' height='50px' width='60px'></img>
+		<br/>
+		<h1>TICKETR</h1>
+		<div id='profile'></div>
+		<br/>
+	</header>
+	<nav>
+		<ul>
+			<li class='nav'><b><a href='home.html'>Home</a></b></li>
+			<li class='nav'><b><a href='about_us.html'>About Us</a></b></li>
+			<li class='nav'><b><a href='home.html#about'>Contact<a></b></li>
+		</ul>
+		<div id='search'>
+			<input type='text' name='search' placeholder='Search'></input>
+		</div>
+	</nav>
+	<div id='main'></div>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<html>
+<head>
+	<title>
+		TICKETR
+	</title>
+	<link rel="shortcut icon" href="logo2.png" />
+	<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script> 
+	<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script> 
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"> </script>
+	<script src="jquery-3.5.1.js"></script>
+	
+	<link rel='stylesheet' href='movies.css'></link>
+	
+	<script type="text/babel">
+		var ind = window.location.href.substr(40);
+		function getdata(){
+			$.getJSON('http://localhost:3000/movies',	// url
+				{'index': ind},		 					// request parameters
+				function (data, textStatus, jqXHR) {
+					fill_data(data);
+				}
+			);
+		}
+		
+		function fill_data(data){
+			class Trailer extends React.Component {
+				constructor() {
+					super();
+					this.state = {
+						trailer: 'none'
+					};
+					this.loadTrailer = this.loadTrailer.bind(this);
+				}
+				componentDidMount() {
+					this.loadTrailer();
+				}
+				loadTrailer() {
+						this.setState(()=>{
+							return {
+								trailer: data['trailer']
+							}
+						});
+				}
+				render() {
+					return (
+						<div>
+							<br/>
+							<center>
+							<video height="300px" width="1000px" controls>
+								<source type="video/mp4" src={this.state.trailer}></source>
+								'Cannot display trailer'
+							</video>
+							</center>
+							<br/><br/>
+						</div>
+					);
+				}
+			}
+			
+			class Name_rate extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					this.state = {
+						title: 'none',
+						imdb: 'none',
+						rt:'none'
+					};
+					this.loadNameRate = this.loadNameRate.bind(this);
+				}
+				componentDidMount() {
+					this.loadNameRate();
+				}
+				loadNameRate() {
+						this.setState(()=>{
+							return {
+								title: data['name'],
+								imdb: data['IMDb'],
+								rt: data['RT']
+							}
+						});
+				}
+				render() {
+					return (
+						<div>
+							<font size='6'><b><i>{this.state.title}</i></b></font>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<span id='rate'><b>IMDb</b>: {this.state.imdb} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Rotten Tomatoes</b>: {this.state.rt}%</span>
+						</div>
+					);
+				}
+			}
+			
+			class Description extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					this.state = {
+						desc: 'none'
+					};
+					this.loadDesc = this.loadDesc.bind(this);
+				}
+				componentDidMount() {
+					this.loadDesc();
+				}
+				loadDesc() {
+						this.setState(()=>{
+							return {
+								desc: data['description']
+							}
+						});
+				}
+				render() {
+					return (
+						<div>
+							<big><p><br/> {this.state.desc} </p></big>
+						</div>
+					);
+				}
+			}
+			
+			class Deets extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					this.state = {
+						lang: 'none',
+						age: 'none',
+						duration:'none',
+						genre:[],
+						time: 'none',
+						day: 'none'
+					};
+					this.loadDeets = this.loadDeets.bind(this);
+				}
+				componentDidMount() {
+					this.loadDeets();
+				}
+				loadDeets() {
+						this.setState(()=>{
+							return {
+								lang: data['language'],
+								age: data['age'],
+								duration: data['duration'],
+								genre: data['genre'],
+								time: data['time'],
+								day: data['date']
+							}
+						});
+				}
+				render() {
+					return (
+						<div>
+							<big>
+							<h3>Details:</h3>
+							<ul>
+								<li>Language: <i>{this.state.lang}</i></li>
+								<li>Age:      <i>{this.state.age}</i></li>
+								<li>Duration: <i>{this.state.duration} mins</i></li>
+								<li>Genres:	  <i>{this.state.genre.toString()}</i></li>
+							</ul>
+							<br/>
+							<big><b>Timings: {this.state.time}</b></big>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<big><b>Day: {this.state.day}<br/></b></big>
+							</big>
+						</div>
+					);
+				}
+			}
+			
+			class Avail extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					this.state = {
+						avail: []
+					};
+					this.loadAvail = this.loadAvail.bind(this);
+				}
+				componentDidMount() {
+					this.loadAvail();
+				}
+				loadAvail() {
+						this.setState(()=>{
+							return {
+								avail: data['availability']
+							}
+						});
+				}
+				render() {
+					return (
+						<div>
+							<big>
+							<h3>Availability</h3>
+							<table class='table' border='black' cellpadding='20'>
+							<tr class='colorit'>
+								<th>VIP: </th>
+								<td>{this.state.avail['vip']}</td>
+							</tr>
+							<tr>
+								<th>Regular: </th>
+								<td>{this.state.avail['reg']}</td>
+							</tr>
+							</table>
+							</big>
+						</div>
+					);
+				}
+			}
+			
+			class Price extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					this.state = {
+						price: []
+					};
+					this.loadPrice = this.loadPrice.bind(this);
+				}
+				componentDidMount() {
+					this.loadPrice();
+				}
+				loadPrice() {
+						this.setState(()=>{
+							return {
+								price: data['price']
+							}
+						});
+				}
+				render() {
+					return (
+						<div>
+							<big>
+							<h3>Price</h3>
+							<table class='table' border='black' cellpadding='20'>
+							<tr>
+								<th>VIP: </th>
+								<td>{this.state.price['vip']}</td>
+							</tr>
+							<tr class='colorit'>
+								<th>Regular: </th>
+								<td>{this.state.price['reg']}</td>
+							</tr>
+							</table>
+							<br/><br/>
+							</big>
+						</div>
+					);
+				}
+			}
+			
+			class Book extends React.Component {
+				constructor(props, context) {
+					super(props, context);
+					
+					this.url='http://localhost:8080/booking.html?index='+data['index'];
+				}
+			
+				render() {
+					if (data['availability']['vip']+data['availability']['reg']!=0)
+						return (
+							<div id='book'>
+								<br/>
+								<center><a href={this.url}><button value='Book'>Book Now!</button></a></center>
+								<br/>
+							</div>
+						);
+					else
+						return (
+							<h3><marquee id='unavail'>Oops! It looks like this movie is booked out! :( </marquee></h3>
+						);		
+				}				
+			}
+			
+			class Movie extends React.Component{
+				render(){
+					return(
+						<div>
+							<Trailer/>
+							<Name_rate/>
+							<Description/>
+							<Deets/>
+							<div class='row'>
+							<div class='col' id='avail'>
+							<Avail/>
+							</div>
+							<div class='col' id='price'>
+							<Price/>
+							</div>
+							</div>
+							<Book/>
+						</div>
+					)
+				}
+			}
+			ReactDOM.render(
+				<div>
+					<Movie/>
+				</div>,
+				document.querySelector('#main')
+			);
+		}
+	</script>
+</head>
+
+<body onload='getdata()'>
+	<header>
+		<img id='logo' src='logo1.png' height='50px' width='60px'></img>
+		<br/>
+		<h1>TICKETR</h1>
+		<div id='profile'></div>
+		<br/>
+	</header>
+	<nav>
+		<ul>
+			<li class='nav'><b><a href='home.html'>Home</a></b></li>
+			<li class='nav'><b><a href='about_us.html'>About Us</a></b></li>
+			<li class='nav'><b><a href='home.html#about'>Contact<a></b></li>
+		</ul>
+		<div id='search'>
+			<input type='text' name='search' placeholder='Search'></input>
+		</div>
+	</nav>
+	
+	<div id='main'><div>
+</body>
+</html>

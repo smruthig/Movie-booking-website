@@ -1,0 +1,92 @@
+<html>
+	<head>
+	<title>
+		TICKETR
+	</title>
+	<link rel="shortcut icon" href="logo2.png" />
+	<link rel='stylesheet' href='login.css' type='text/css'> 
+	<script src="jquery-3.5.1.js"></script>
+
+	<script>
+		function hide()
+		{
+			var hidden=document.querySelector('#log');
+			hidden.style.display = 'none';
+		}
+		
+		function sign(){
+			$('#log').slideToggle();
+			$('#sign').slideToggle();
+		}
+	</script>
+	</head>
+	<body onload='hide()'>
+	<header>
+		<img id='logo' src='logo1.png' height='50px' width='60px'></img>
+		<br/>
+		<h1>TICKETR</h1>
+		<div id='profile'></div>
+		<br/>
+	</header>
+	<br/>
+	
+	<div id='log'>
+		<center><h2>Login</h2></center>
+		<form action="http://localhost:8080/home.html?login" method="post">
+		  <div class="imgcontainer">
+			<img src="dp1.jpg" alt="Profile" class="profile" width='10px' height='70px'>
+		  </div>
+
+		  <div class="container">
+			<label for="uname"><b>Username</b></label>
+			<input type="text" placeholder="Enter Username" name="uname" required>
+
+			<label for="pswd"><b>Password</b></label>
+			<input type="password" placeholder="Enter Password" name="pswd" required>
+				
+		  </div>
+
+		  <div class="container" style="background-color:#dadbe3">
+			<center><button type="submit">Login</button>
+			<button type="reset" class="cancelbtn">Cancel</button></center>
+		  </div>
+		</form>
+		
+		<center>
+		<button class='button0' name='sign' value='Sign up' onclick='sign()'>Sign up</button>
+		</center>
+	</div>
+	
+	<div id='sign'>
+		<center><h2>Sign up</h2></center>
+		<form action="http://localhost:8080/home.html?sign" method="post">
+		  <div class="imgcontainer">
+			<img src="dp1.jpg" alt="Profile" class="profile" width='10px' height='70px'>
+		  </div>
+
+		  <div class="container">
+			<label for="uname"><b>Username</b></label>
+			<input type="text" placeholder="Enter Username" name="uname" required>
+
+			<label for="pswd"><b>Password</b></label>
+			<input type="password" pattern="(?=.*\d)(?=.*[A-Z]).{8,}" placeholder="Enter Password" name="pswd" required>
+			<p style='color:red;'><small><i>Must contain at least 8 characters with at least 1 uppercase and 1 number</i></small></p>
+			
+			<label for="confirm"><b>Confirm Password</b></label>
+			<input type="password" pattern="(?=.*\d)(?=.*[A-Z]).{8,}" placeholder="Enter Password" name="confirm" required>
+			<p style='color:red;'><small><i>Password not matching</i></small></p>
+		  </div>
+
+		  <div class="container" style="background-color:#dadbe3">
+			<center><button type="submit">Login</button>
+			<button type="reset" class="cancelbtn">Cancel</button></center>
+		  </div>
+		</form>
+		
+		<center>
+		<button class='button0' name='sign' value='Login' onclick='sign()'>Login</button>
+		</center>
+	</div>
+
+	</body>
+</html>
