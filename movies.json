@@ -1,0 +1,520 @@
+[{
+  "_id": {
+    "$oid": "5fb2778cb721a4e75451d169"
+  },
+  "index": "1",
+  "date": "Monday",
+  "name": "Spider-Man: Far From Home",
+  "language": "English",
+  "age": "13+",
+  "duration": 129,
+  "genre": [
+    "Action",
+    "Adventure"
+  ],
+  "description": "As Spider-Man, a beloved superhero, Peter Parker faces four destructive elemental monsters while on holiday in Europe. Soon, he receives help from Mysterio, a fellow hero with mysterious origins.",
+  "IMDb": 7.5,
+  "RT": 90,
+  "poster": "chrome-extension://<your_extension_id>/spiderman.jpg",
+  "trailer": "chrome-extension://<your_extension_id>/spiderman.mov",
+  "availability": {
+    "vip": 0,
+    "reg": 0
+  },
+  "price": {
+    "vip": 300,
+    "reg": 250
+  },
+  "time": "10:30-12:30"
+},{
+  "_id": {
+    "$oid": "5fb277b6b721a4e75451d16a"
+  },
+  "index": "2",
+  "date": "Tuesday",
+  "name": "Spider-Man: Far From Home",
+  "language": "English",
+  "age": "13+",
+  "duration": 129,
+  "genre": [
+    "Action",
+    "Adventure"
+  ],
+  "description": "As Spider-Man, a beloved superhero, Peter Parker faces four destructive elemental monsters while on holiday in Europe. Soon, he receives help from Mysterio, a fellow hero with mysterious origins.",
+  "IMDb": 7.5,
+  "RT": 90,
+  "poster": "chrome-extension://<your_extension_id>/spiderman.jpg",
+  "trailer": "chrome-extension://<your_extension_id>/spiderman.mov",
+  "availability": {
+    "vip": 3,
+    "reg": 14
+  },
+  "price": {
+    "vip": 300,
+    "reg": 250
+  },
+  "time": "10:30-12:30"
+},{
+  "_id": {
+    "$oid": "5fb277eeb721a4e75451d16b"
+  },
+  "index": "3",
+  "date": "Saturday",
+  "name": "Spider-Man: Far From Home",
+  "language": "English",
+  "age": "13+",
+  "duration": 129,
+  "genre": [
+    "Action",
+    "Adventure"
+  ],
+  "description": "As Spider-Man, a beloved superhero, Peter Parker faces four destructive elemental monsters while on holiday in Europe. Soon, he receives help from Mysterio, a fellow hero with mysterious origins.",
+  "IMDb": 7.5,
+  "RT": 90,
+  "poster": "chrome-extension://<your_extension_id>/spiderman.jpg",
+  "trailer": "https://youtu.be/Nt9L1jCKGnE",
+  "availability": {
+    "vip": 17,
+    "reg": 2
+  },
+  "price": {
+    "vip": 300,
+    "reg": 250
+  },
+  "time": "10:30-12:30"
+},{
+  "_id": {
+    "$oid": "5fb279c6b721a4e75451d16c"
+  },
+  "index": "4",
+  "date": "Monday",
+  "name": "Guardians of the Galaxy Vol. 2",
+  "language": "English",
+  "age": "13+",
+  "duration": 136,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father the ambitious celestial being Ego.",
+  "IMDb": 7.6,
+  "RT": 90,
+  "poster": "chrome-extension://<your_extension_id>/gotg.jpg",
+  "trailer": "https://youtu.be/dW1BIid8Osg",
+  "availability": {
+    "vip": 1,
+    "reg": 1
+  },
+  "price": {
+    "vip": 450,
+    "reg": 250
+  },
+  "time": "13:30-15:45"
+},{
+  "_id": {
+    "$oid": "5fb279e9b721a4e75451d16d"
+  },
+  "index": "5",
+  "date": "Tuesday",
+  "name": "Guardians of the Galaxy Vol. 2",
+  "language": "English",
+  "age": "13+",
+  "duration": 136,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father the ambitious celestial being Ego.",
+  "IMDb": 7.6,
+  "RT": 90,
+  "poster": "chrome-extension://<your_extension_id>/gotg.jpg",
+  "trailer": "https://youtu.be/dW1BIid8Osg",
+  "availability": {
+    "vip": 1,
+    "reg": 20
+  },
+  "price": {
+    "vip": 450,
+    "reg": 250
+  },
+  "time": "13:30-15:45"
+},{
+  "_id": {
+    "$oid": "5fb27a74b721a4e75451d16e"
+  },
+  "index": "6",
+  "date": "Tuesday",
+  "name": "Ant-Man",
+  "language": "English",
+  "age": "13+",
+  "duration": 117,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "Armed with a super-suit with the astonishing ability to shrink in scale but increase in strength, cat burglar Scott Lang must embrace his inner hero and help his mentor, Dr. Hank Pym, plan and pull off a heist that will save the world.",
+  "IMDb": 7.3,
+  "RT": 64,
+  "poster": "chrome-extension://<your_extension_id>/antman.jpg",
+  "trailer": "https://youtu.be/pWdKf3MneyI",
+  "availability": {
+    "vip": 3,
+    "reg": 13
+  },
+  "price": {
+    "vip": 450,
+    "reg": 350
+  },
+  "time": "17:00-19:00"
+},{
+  "_id": {
+    "$oid": "5fb27aa0b721a4e75451d16f"
+  },
+  "index": "7",
+  "date": "Wednesday",
+  "name": "Ant-Man",
+  "language": "English",
+  "age": "13+",
+  "duration": 117,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "Armed with a super-suit with the astonishing ability to shrink in scale but increase in strength, cat burglar Scott Lang must embrace his inner hero and help his mentor, Dr. Hank Pym, plan and pull off a heist that will save the world.",
+  "IMDb": 7.3,
+  "RT": 64,
+  "poster": "chrome-extension://<your_extension_id>/antman.jpg",
+  "trailer": "https://youtu.be/pWdKf3MneyI",
+  "availability": {
+    "vip": 2,
+    "reg": 30
+  },
+  "price": {
+    "vip": 450,
+    "reg": 350
+  },
+  "time": "17:00-19:00"
+},{
+  "_id": {
+    "$oid": "5fb27b18b721a4e75451d170"
+  },
+  "index": "8",
+  "date": "Thursday",
+  "name": "Ant-Man",
+  "language": "English",
+  "age": "13+",
+  "duration": 117,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "Armed with a super-suit with the astonishing ability to shrink in scale but increase in strength, cat burglar Scott Lang must embrace his inner hero and help his mentor, Dr. Hank Pym, plan and pull off a heist that will save the world.",
+  "IMDb": 7.3,
+  "RT": 64,
+  "poster": "chrome-extension://<your_extension_id>/antman.jpg",
+  "trailer": "https://youtu.be/pWdKf3MneyI",
+  "availability": {
+    "vip": 19,
+    "reg": 18
+  },
+  "price": {
+    "vip": 450,
+    "reg": 350
+  },
+  "time": "17:00-19:00"
+},{
+  "_id": {
+    "$oid": "5fb27be9b721a4e75451d171"
+  },
+  "index": "9",
+  "date": "Monday",
+  "name": "Doctor Strange            ",
+  "language": "English",
+  "age": "13+",
+  "duration": 115,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Fantasy"
+  ],
+  "description": "While on a journey of physical and spiritual healing, a brilliant neurosurgeon is drawn into the world of the mystic arts.",
+  "IMDb": 7.5,
+  "RT": 74,
+  "poster": "chrome-extension://<your_extension_id>/drstrange.jpg",
+  "trailer": "https://youtu.be/h7gvFravm4A",
+  "availability": {
+    "vip": 21,
+    "reg": 10
+  },
+  "price": {
+    "vip": 450,
+    "reg": 350
+  },
+  "time": "20:00-22:00"
+},{
+  "_id": {
+    "$oid": "5fb27c05b721a4e75451d172"
+  },
+  "index": "10",
+  "date": "Wednesday",
+  "name": "Doctor Strange",
+  "language": "English",
+  "age": "13+",
+  "duration": 115,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Fantasy"
+  ],
+  "description": "While on a journey of physical and spiritual healing, a brilliant neurosurgeon is drawn into the world of the mystic arts.",
+  "IMDb": 7.5,
+  "RT": 74,
+  "poster": "chrome-extension://<your_extension_id>/drstrange.jpg",
+  "trailer": "https://youtu.be/h7gvFravm4A",
+  "availability": {
+    "vip": 5,
+    "reg": 10
+  },
+  "price": {
+    "vip": 450,
+    "reg": 350
+  },
+  "time": "20:00-22:00"
+},{
+  "_id": {
+    "$oid": "5fc0dbe036742f6ec85260c9"
+  },
+  "index": "11",
+  "date": "Friday",
+  "name": "Doctor Strange",
+  "language": "English",
+  "age": "13+",
+  "duration": 115,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Fantasy"
+  ],
+  "description": "While on a journey of physical and spiritual healing, a brilliant neurosurgeon is drawn into the world of the mystic arts.",
+  "IMDb": 7.5,
+  "RT": 74,
+  "poster": "chrome-extension://<your_extension_id>/drstrange.jpg",
+  "trailer": "https://youtu.be/h7gvFravm4A",
+  "availability": {
+    "vip": 5,
+    "reg": 10
+  },
+  "price": {
+    "vip": 450,
+    "reg": 350
+  },
+  "time": "20:00-22:00"
+},{
+  "_id": {
+    "$oid": "5fc659c04c95a98cbcbe0605"
+  },
+  "index": "12",
+  "date": "Wednesday",
+  "name": "Iron Man 1     ",
+  "language": "English",
+  "age": "13+",
+  "duration": 122,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "Tony Stark, who has inherited the defense contractor Stark Industries from his father Howard Stark, is in war-torn Afghanistan with his friend and military liaison, Lieutenant Colonel James Rhodes, to demonstrate the new 'Jericho' missile. After the demonstration, the convoy is ambushed and Stark is critically wounded by a missile used by the attackers: one of his company's own.",
+  "IMDb": 9.8,
+  "RT": 94,
+  "poster": "chrome-extension://<your_extension_id>/ironman.jpg",
+  "trailer": "https://youtu.be/dW1BIid8Osg",
+  "availability": {
+    "vip": 1,
+    "reg": 16
+  },
+  "price": {
+    "vip": 450,
+    "reg": 250
+  },
+  "time": "17:30-19:45"
+},{
+  "_id": {
+    "$oid": "5fc659ec4c95a98cbcbe0606"
+  },
+  "index": "13",
+  "date": "Thursday",
+  "name": "Iron Man 1     ",
+  "language": "English",
+  "age": "13+",
+  "duration": 122,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "Tony Stark, who has inherited the defense contractor Stark Industries from his father Howard Stark, is in war-torn Afghanistan with his friend and military liaison, Lieutenant Colonel James Rhodes, to demonstrate the new 'Jericho' missile. After the demonstration, the convoy is ambushed and Stark is critically wounded by a missile used by the attackers: one of his company's own.",
+  "IMDb": 9.8,
+  "RT": 94,
+  "poster": "chrome-extension://<your_extension_id>/ironman.jpg",
+  "trailer": "https://youtu.be/dW1BIid8Osg",
+  "availability": {
+    "vip": 1,
+    "reg": 17
+  },
+  "price": {
+    "vip": 450,
+    "reg": 250
+  },
+  "time": "13:30-15:45"
+},{
+  "_id": {
+    "$oid": "5fc65a214c95a98cbcbe0607"
+  },
+  "index": "14",
+  "date": "Thursday",
+  "name": "Guardians of the Galaxy Vol. 2",
+  "language": "English",
+  "age": "13+",
+  "duration": 136,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father the ambitious celestial being Ego.",
+  "IMDb": 7.6,
+  "RT": 90,
+  "poster": "chrome-extension://<your_extension_id>/gotg.jpg",
+  "trailer": "https://youtu.be/dW1BIid8Osg",
+  "availability": {
+    "vip": 1,
+    "reg": 19
+  },
+  "price": {
+    "vip": 450,
+    "reg": 250
+  },
+  "time": "17:30-19:45"
+},{
+  "_id": {
+    "$oid": "5fc65b194c95a98cbcbe0608"
+  },
+  "index": "15",
+  "date": "Friday",
+  "name": "Captain America: First Avenger",
+  "language": "English",
+  "age": "13+",
+  "duration": 117,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": " During World War II, Steve Rogers, a frail man, is transformed into the super-soldier Captain America and must stop the Red Skull from using the Tesseract as an energy source for world domination.",
+  "IMDb": 7.3,
+  "RT": 64,
+  "poster": "chrome-extension://<your_extension_id>/captainamerica.jpg",
+  "trailer": "https://youtu.be/pWdKf3MneyI",
+  "availability": {
+    "vip": 4,
+    "reg": 22
+  },
+  "price": {
+    "vip": 450,
+    "reg": 350
+  },
+  "time": "17:00-19:00"
+},{
+  "_id": {
+    "$oid": "5fc65b674c95a98cbcbe0609"
+  },
+  "index": "16",
+  "date": "Friday",
+  "name": "Iron Man 1     ",
+  "language": "English",
+  "age": "13+",
+  "duration": 122,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "Tony Stark, who has inherited the defense contractor Stark Industries from his father Howard Stark, is in war-torn Afghanistan with his friend and military liaison, Lieutenant Colonel James Rhodes, to demonstrate the new 'Jericho' missile. After the demonstration, the convoy is ambushed and Stark is critically wounded by a missile used by the attackers: one of his company's own.",
+  "IMDb": 9.8,
+  "RT": 94,
+  "poster": "chrome-extension://<your_extension_id>/ironman.jpg",
+  "trailer": "https://youtu.be/dW1BIid8Osg",
+  "availability": {
+    "vip": 1,
+    "reg": 19
+  },
+  "price": {
+    "vip": 450,
+    "reg": 250
+  },
+  "time": "13:30-15:45"
+},{
+  "_id": {
+    "$oid": "5fc65bbc4c95a98cbcbe060a"
+  },
+  "index": "17",
+  "date": "Saturday",
+  "name": "Captain America: First Avenger",
+  "language": "English",
+  "age": "13+",
+  "duration": 117,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": " During World War II, Steve Rogers, a frail man, is transformed into the super-soldier Captain America and must stop the Red Skull from using the Tesseract as an energy source for world domination.",
+  "IMDb": 7.3,
+  "RT": 64,
+  "poster": "chrome-extension://<your_extension_id>/captainamerica.jpg",
+  "trailer": "https://youtu.be/pWdKf3MneyI",
+  "availability": {
+    "vip": 4,
+    "reg": 19
+  },
+  "price": {
+    "vip": 450,
+    "reg": 350
+  },
+  "time": "17:00-19:00"
+},{
+  "_id": {
+    "$oid": "5fc65bf54c95a98cbcbe060b"
+  },
+  "index": "18",
+  "date": "Saturday",
+  "name": "Guardians of the Galaxy Vol. 2",
+  "language": "English",
+  "age": "13+",
+  "duration": 136,
+  "genre": [
+    "Action",
+    "Adventure",
+    "Comedy"
+  ],
+  "description": "The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father the ambitious celestial being Ego.",
+  "IMDb": 7.6,
+  "RT": 90,
+  "poster": "chrome-extension://<your_extension_id>/gotg.jpg",
+  "trailer": "https://youtu.be/dW1BIid8Osg",
+  "availability": {
+    "vip": 1,
+    "reg": 20
+  },
+  "price": {
+    "vip": 450,
+    "reg": 250
+  },
+  "time": "17:30-19:45"
+}]

@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "5fc673227078ba57401d00f9"
+  },
+  "uname": "smruthi",
+  "pswd": "A1234567",
+  "movies": "{}"
+},{
+  "_id": {
+    "$oid": "5fd062218519a602e0b1f3ef"
+  },
+  "uname": "a",
+  "pswd": "a",
+  "movies": "{}"
+},{
+  "_id": {
+    "$oid": "5fd1921a2bd6cb3f7055de55"
+  },
+  "uname": "raj",
+  "pswd": "LLLL0000"
+},{
+  "_id": {
+    "$oid": "5fd1b47b2096263a7cf35f30"
+  },
+  "uname": "shruthi",
+  "pswd": "QQQQ1111"
+},{
+  "_id": {
+    "$oid": "60164809e797935d6c06d6db"
+  },
+  "uname": "satish",
+  "pswd": "SAMA1234"
+},{
+  "_id": {
+    "$oid": "60164809e797935d6c06d6dc"
+  },
+  "uname": "satish",
+  "pswd": "SAMA1234"
+},{
+  "_id": {
+    "$oid": "601649eb90003b07d8eee697"
+  },
+  "uname": "smruthi",
+  "pswd": "QQQQ1111"
+},{
+  "_id": {
+    "$oid": "60164a2190003b07d8eee698"
+  },
+  "uname": "shubha",
+  "pswd": "QWER1234"
+}]
